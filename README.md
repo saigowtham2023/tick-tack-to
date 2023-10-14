@@ -80,6 +80,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   **when we use functions on containers(like arrays) inside hooks we should mention them in []
 
 # provide game history
-  **move the stste up from board to game**
+  **move the state up from board to game**
     - adding a game component as the default component
     - adding history state to maintain the history of the game
+  **add a feature to list the previous states of the board**
+    
