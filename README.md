@@ -84,4 +84,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     - adding a game component as the default component
     - adding history state to maintain the history of the game
   **add a feature to list the previous states of the board**
+    - add a orderd list element to game and pass moves as a prop to it
+    - moves gets a list of "go to buttons" using map method on the history state and arrow function
     
