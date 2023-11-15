@@ -73,6 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
   - out put differs bases on how i place **classname** attribute, to **Square** component or to **button** element 
   - why are all the square components not alligned in a single line
+  - regarding showing history when i was using setCurrentMove(history.length-1) 'x' was not displayed
 # Findings
   **a *prop* cannot be a part of a render but a *function call* is a part of the rendering process** 
   - this can be seen when trying to send handleClick(0) is told to give an error of *exceded rendering limit*.
@@ -81,9 +82,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # provide game history
   **move the state up from board to game**
-    - adding a game component as the default component
-    - adding history state to maintain the history of the game
+    - adding a game component as the default component.
+    - adding history state to maintain the history of the game.
+    - initilizing a currentState const variable which is used while rendering the state.
   **add a feature to list the previous states of the board**
-    - add a orderd list element to game and pass moves as a prop to it
-    - moves gets a list of "go to buttons" using map method on the history state and arrow function
+    - add a orderd list element to game and pass moves as a prop to it.
+    - moves gets a list of "go to buttons" using map method on the history state and arrow function.
     
