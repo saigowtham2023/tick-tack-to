@@ -77,22 +77,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   - when we branch and make changes in the branch, when we chenk other branches in vs code we can see that the changes
       in other branches also but if we cross chech in GH repository we can see that changes are applied to only commited and synced branches only. Is this a refreshing bug of vs code while switching branches? or other reason?
 # Findings
-  **a prop cannot be a part of a render but a function call is a part of the rendering process** 
+  - **a prop cannot be a part of a render but a function call is a part of the rendering process** 
     - this can be seen when trying to send handleClick(0) is told to give an error of exceded rendering limit.
-  **an arrow function can be passed directly as a propo unlike a *function call**
+  - **an arrow function can be passed directly as a propo unlike a *function call**
     - when we use functions on containers(like arrays) inside hooks we should mention them in []
 
 # provide game history
-  **move the state up from board to game**
+  - **move the state up from board to game**
     - adding a game component as the default component.
     - adding history state to maintain the history of the game.
     - initilizing a currentState const variable which is used while rendering the state.
-  **add a feature to list the previous states of the board**
+  - **add a feature to list the previous states of the board**
     - add a orderd list element to game and pass moves as a prop to it.
     - moves gets a list of "go to buttons" using map method on the history state and arrow function.
 
 # using two loops to write the board component instead of hard coding it 
-  **using two loops**
+  - **using two loops**
     - used two for loops which iterate on row and col.
     - initilized and used three const variables boardrow, boardcol, squareindex.
     - used push() function to push jsx into const variables boardrow, boardcol.
