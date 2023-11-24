@@ -78,7 +78,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
       in other branches also but if we cross chech in GH repository we can see that changes are applied to only commited and synced branches only. Is this a refreshing bug of vs code while switching branches? or other reason?
 # Findings
   **a prop cannot be a part of a render but a function call is a part of the rendering process** 
-    - this can be seen when trying to send handleClick(0) is told to give an error of *exceded rendering limit*.
+    - this can be seen when trying to send handleClick(0) is told to give an error of exceded rendering limit.
   **an arrow function can be passed directly as a propo unlike a *function call**
     - when we use functions on containers(like arrays) inside hooks we should mention them in []
 
