@@ -74,6 +74,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   - out put differs bases on how i place **classname** attribute, to **Square** component or to **button** element 
   - why are all the square components not alligned in a single line
   - regarding showing history when i was using setCurrentMove(history.length-1) 'x' was not displayed
+  - when we branch and make changes in the branch, when we chenk other branches in vs code we can see that the changes
+      in other branches also but if we cross chech in GH repository we can see that changes are applied to only commited and sinced branches only. Is this a refreshing bug of vs code while switching branches? or other reason?
 # Findings
   **a *prop* cannot be a part of a render but a *function call* is a part of the rendering process** 
   - this can be seen when trying to send handleClick(0) is told to give an error of *exceded rendering limit*.
@@ -88,4 +90,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   **add a feature to list the previous states of the board**
     - add a orderd list element to game and pass moves as a prop to it.
     - moves gets a list of "go to buttons" using map method on the history state and arrow function.
+
+# using two loops to write the board component instead of hard coding it 
+  **using two loops**
+    -used two for loops which iterate on row and col.
+    -initilized and used three const variables boardrow, boardcol, squareindex.
+    -used push() function to push jsx into const variables boardrow, boardcol.
+    -rendered the boardrow variable in jsx using {boardrow}
     
