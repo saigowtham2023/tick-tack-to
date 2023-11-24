@@ -93,8 +93,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # using two loops to write the board component instead of hard coding it 
   **using two loops**
-    -used two for loops which iterate on row and col.
-    -initilized and used three const variables boardrow, boardcol, squareindex.
-    -used push() function to push jsx into const variables boardrow, boardcol.
-    -rendered the boardrow variable in jsx using {boardrow}
+    - used two for loops which iterate on row and col.
+    - initilized and used three const variables boardrow, boardcol, squareindex.
+    - used push() function to push jsx into const variables boardrow, boardcol.
+    - rendered the boardrow variable in jsx using {boardrow}
     
