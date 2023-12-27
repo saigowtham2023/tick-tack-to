@@ -97,4 +97,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     - initilized and used three const variables boardrow, boardcol, squareindex.
     - used push() function to push jsx into const variables boardrow, boardcol.
     - rendered the boardrow variable in jsx using {boardrow}
+  
+# ascinding descending order toggle button
+  -include a toggle button 
     
