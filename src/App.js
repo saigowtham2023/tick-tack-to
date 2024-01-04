@@ -76,23 +76,45 @@ export default function Game() {
     setCurrentMove(nextmoves)
   }
 
+  function coordinateFinder(moves) {
+    const presentMove = history[moves]
+    const previousMove = history[moves - 1]
+    let cood = null;
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (presentMove[i * 3 + j] === previousMove[i * 3 + j]) {
+          cood = [i, j]
+          return cood
+        }
+      }
+    }
+  }
+
   const moves = history.map((squares, move) => {
     let description
     let diff
     let len = history.length
+    let coordinate = coordinateFinder(move)
     if (isAscOrder) {
       if (move > 0 && move !== currentMove) {
         description = 'go to move #' + move
       }
       else if (move === currentMove) {
         description = 'you are at move#' + move
-        return <li key={move}>{description}</li>
+        return (
+          <li key={move}>
+            <div>
+              <p>{coordinate}</p>
+              <p>{description}</p>
+            </div>
+          </li>);
       }
       else if (move === 0) {
         description = 'go to start'
       }
       return (
         <li key={move}>
+          <p>{coordinate}</p>
           <button onClick={() => jumpTo(move)}>{description}</button>
         </li>
       );
