@@ -19,7 +19,7 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares)
   let status
   if (winner) {
-    status = 'winner : ' + winner
+    status = 'winner : ' + squares[winner[0]]
   }
   else {
     status = 'next turn : ' + ((xIsNext % 2) ? 'O' : 'X')
@@ -29,9 +29,23 @@ function Board({ xIsNext, squares, onPlay }) {
     const boardcol = []
     for (let col = 0; col < 3; col++) {
       const squareindex = row * 3 + col
-      boardcol.push(
-        <Square value={squares[squareindex]} onSquareClick={() => handleClick(squareindex)} />
-      )
+      if (winner) {
+        if (squareindex === winner[0] || squareindex === winner[1] || squareindex === winner[2]) {
+          boardcol.push(
+            <Square style={{ color: 'red' }} value={squares[squareindex]} onSquareClick={() => handleClick(squareindex)} />
+          )
+        }
+        else {
+          boardcol.push(
+            <Square value={squares[squareindex]} onSquareClick={() => handleClick(squareindex)} />
+          )
+        }
+      }
+      else {
+        boardcol.push(
+          <Square value={squares[squareindex]} onSquareClick={() => handleClick(squareindex)} />
+        )
+      }
     }
     boardrow.push(
       <div className="board-row">
@@ -53,7 +67,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i]
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a]
+      return lines[i]
     }
   }
   return null
