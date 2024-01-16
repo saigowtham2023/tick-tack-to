@@ -67,7 +67,6 @@ function calculateWinner(squares) {
   return null
 }
 
-
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)])
   const [currentMove, setCurrentMove] = useState(0)
@@ -84,16 +83,35 @@ export default function Game() {
     setCurrentMove(nextmoves)
   }
 
+  function positionFinder(squares1, squares2) {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (squares1[i * 3 + j] !== squares2[i * 3 + j]) {
+          return [i, j]
+        }
+      }
+    }
+  }
+
   const moves = history.map((squares, move) => {
     let description
     let diff
     let len = history.length
+    let coordinate
+    if (move > 0) {
+      coordinate = positionFinder(history[move], history[move - 1])
+    }
     if (isAscOrder) {
       if (move > 0 && move !== currentMove) {
-        description = 'go to move #' + move
+        description = 'go to move #' + move + ' @' + coordinate[0] + ',' + coordinate[1]
       }
       else if (move === currentMove) {
-        description = 'you are at move#' + move
+        if (move !== 9) {
+          description = 'you are at move#' + move
+        }
+        else {
+          description = 'you are at move#' + move + ' @' + coordinate[0] + ',' + coordinate[1]
+        }
         return <li key={move}>{description}</li>
       }
       else if (move === 0) {
