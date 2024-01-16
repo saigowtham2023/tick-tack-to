@@ -12,7 +12,7 @@ function Square({ index, winner, value, onSquareClick }) {
   }
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ status, xIsNext, winner, squares, onPlay }) {
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
       return;
@@ -20,17 +20,6 @@ function Board({ xIsNext, squares, onPlay }) {
     const nextSquares = squares.slice();
     nextSquares[i] = ((xIsNext % 2) ? 'O' : 'X')
     onPlay(nextSquares)
-  }
-  const winner = calculateWinner(squares)
-  let status
-  if (winner) {
-    status = 'winner : ' + squares[winner[0]]
-  }
-  else if (xIsNext === 9) {
-    status = 'No winner'
-  }
-  else {
-    status = 'next turn : ' + ((xIsNext % 2) ? 'O' : 'X')
   }
   const boardrow = []
   for (let row = 0; row < 3; row++) {
@@ -93,6 +82,18 @@ export default function Game() {
     }
   }
 
+  const winner = calculateWinner(currentSquares)
+  let status
+  if (winner) {
+    status = 'winner : ' + currentSquares[winner[0]]
+  }
+  else if (currentMove === 9) {
+    status = 'No winner'
+  }
+  else {
+    status = 'next turn : ' + ((currentMove % 2) ? 'O' : 'X')
+  }
+
   const moves = history.map((squares, move) => {
     let description
     let diff
@@ -106,11 +107,11 @@ export default function Game() {
         description = 'go to move #' + move + ' @' + coordinate[0] + ',' + coordinate[1]
       }
       else if (move === currentMove) {
-        if (move !== 9) {
-          description = 'you are at move#' + move
+        if (winner || move === 9) {
+          description = 'you are at move#' + move + ' @' + coordinate[0] + ',' + coordinate[1]
         }
         else {
-          description = 'you are at move#' + move + ' @' + coordinate[0] + ',' + coordinate[1]
+          description = 'you are at move#' + move
         }
         return <li key={move}>{description}</li>
       }
@@ -149,7 +150,7 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={currentMove} squares={currentSquares} onPlay={handlePlay} />
+        <Board status={status} xIsNext={currentMove} winner={winner} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <button onClick={onToggle}>{isAscOrder ? "ascending order" : "decending order"}</button>
